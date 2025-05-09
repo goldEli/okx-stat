@@ -29,7 +29,7 @@ def open_okx_explorer():
     try:
         all_data = []
         page_count = 0
-        max_pages = 10
+        max_pages = 20
 
         while page_count < max_pages:
             # 等待表格主体加载完成（最多等待20秒）
