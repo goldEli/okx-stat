@@ -53,7 +53,7 @@ def open_okx_explorer():
                     if date == "" or amount == "":
                         continue
                     # date = 2025/05/09 16:26:21 时间需要等于2025/05/09
-                    if date.split(" ")[0] != "2025/05/09":
+                    if date.split(" ")[0] != config["timeStr"]:
                         continue
                     all_data.append({
                         "date": date,
