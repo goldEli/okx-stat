@@ -1,9 +1,11 @@
 import os
 from datetime import datetime
 
+mouth = 6
+
 def analyze_salary():
     # 检查文件是否存在
-    file_path = 'data/8.txt'
+    file_path = f'data/{mouth}.txt'
     if not os.path.exists(file_path):
         print(f"错误：文件 {file_path} 不存在")
         return
@@ -66,7 +68,7 @@ def analyze_salary():
                         range_counts[range_key] += 1
                         break
 
-            print(f"\n8月份薪水统计情况：")
+            print(f"\n{mouth}月份薪水统计情况：")
             print(f"总计：{total_salary:.2f}")
             print(f"平均值：{average_salary:.2f}")
             print(f"最高值：{max_salary:.2f}")

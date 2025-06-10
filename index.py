@@ -20,6 +20,7 @@ def open_okx_explorer():
     # 创建Chrome浏览器实例
     driver = webdriver.Chrome(options=chrome_options)
 
+    print("打开浏览器")
     # get url by config.json
     with open("config.json", "r") as f:
         config = json.load(f)
@@ -29,17 +30,19 @@ def open_okx_explorer():
     try:
         all_data = []
         page_count = 0
-        max_pages = 20
+        max_pages = 21
+
+        print("开始获取数据")
 
         while page_count < max_pages:
             # 等待表格主体加载完成（最多等待20秒）
             tbody = WebDriverWait(driver, 20).until(
-                EC.presence_of_element_located((By.CLASS_NAME, "okui-table-tbody"))
+                EC.presence_of_element_located((By.CLASS_NAME, "albkcn-table-tbody"))
             )
             
             # 等待所有行加载完成
             rows = WebDriverWait(driver, 20).until(
-                EC.presence_of_all_elements_located((By.CSS_SELECTOR, ".okui-table-tbody tr"))
+                EC.presence_of_all_elements_located((By.CSS_SELECTOR, ".albkcn-table-tbody tr"))
             )
             
             # 获取数据
@@ -64,7 +67,7 @@ def open_okx_explorer():
             try:
                 # 等待下一页按钮可点击
                 next_button = WebDriverWait(driver, 10).until(
-                    EC.element_to_be_clickable((By.CLASS_NAME, "okui-pagination-next"))
+                    EC.element_to_be_clickable((By.CLASS_NAME, "albkcn-pagination-next"))
                 )
                 next_button.click()
                 
@@ -99,4 +102,5 @@ def open_okx_explorer():
         driver.quit()
 
 if __name__ == "__main__":
+    print("开始执行")
     open_okx_explorer()
